@@ -21,7 +21,7 @@ import java.util.UUID;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class ProduceTest {
+public class ProduceTestIT {
 
     private final static String MESSAGE = "Hello World";
 
