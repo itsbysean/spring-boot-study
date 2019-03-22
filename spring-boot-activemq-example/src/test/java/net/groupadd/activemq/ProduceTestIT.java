@@ -1,5 +1,6 @@
 package net.groupadd.activemq;
 
+import net.groupadd.activemq.consumer.QConsumer;
 import net.groupadd.activemq.model.SimpleMessage;
 import net.groupadd.activemq.producer.QProducer;
 import org.junit.Assert;
@@ -9,11 +10,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by itsbysean.
@@ -32,7 +33,7 @@ public class ProduceTestIT {
     private QProducer qProducer;
 
     @Autowired
-    private JmsTemplate jmsTemplate;
+    private QConsumer qConsumer;
 
 
     private UUID id;
@@ -43,16 +44,13 @@ public class ProduceTestIT {
     }
 
     @Test
-    public void test_produce_simple_message() throws InterruptedException {
+    public void test_produce_and_consume_simple_message() throws InterruptedException {
         final SimpleMessage message = new SimpleMessage();
         message.setId(this.id);
         message.setMsg(MESSAGE);
         this.qProducer.produce(message);
-        Thread.sleep(1000l);
-
-        final SimpleMessage received = (SimpleMessage) this.jmsTemplate.receiveAndConvert(queue);
-
-        Assert.assertEquals(received.getId().toString(), id.toString());
+        this.qConsumer.getLatch().await(2, TimeUnit.SECONDS);
+        Assert.assertEquals(this.qConsumer.getLatch().getCount(),1);
 
     }
 
