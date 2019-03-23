@@ -2,7 +2,6 @@ package net.groupadd.activemq.consumer;
 
 import lombok.extern.slf4j.Slf4j;
 import net.groupadd.activemq.model.SimpleMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
@@ -15,15 +14,15 @@ import java.util.concurrent.CountDownLatch;
 @Component
 public class QConsumer {
 
-    @Autowired
-    private CountDownLatch countDownLatch;
+    private CountDownLatch countDownLatch = new CountDownLatch(1);
 
     public CountDownLatch getLatch() {
-        return countDownLatch;
+        return this.countDownLatch;
     }
 
-    @JmsListener(destination = "${example.queue}", containerFactory = "listenerContainerFactory")
+    @JmsListener(destination = "${example.queue}", containerFactory = "simpleQueueFactory")
     public void receive(final SimpleMessage simpleMessage){
-      log.info(simpleMessage.toString());
+        log.info(simpleMessage.toString());
+        getLatch().countDown();
     }
 }
