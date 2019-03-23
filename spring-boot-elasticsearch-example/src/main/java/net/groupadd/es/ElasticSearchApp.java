@@ -1,0 +1,14 @@
+package net.groupadd.es;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ * Hello world!
+ */
+@SpringBootApplication
+public class ElasticSearchApp {
+    public static void main(String[] args) {
+        SpringApplication.run(ElasticSearchApp.class, args);
+    }
+}
