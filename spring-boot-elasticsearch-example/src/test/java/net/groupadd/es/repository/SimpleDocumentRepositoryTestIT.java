@@ -73,9 +73,11 @@ public class SimpleDocumentRepositoryTestIT {
     public void test_get_document_by_id() {
         final SimpleDocument savedDocument = this.simpleDocumentRepository.save(this.document);
         final Optional<SimpleDocument> optionalFoundDocument = this.simpleDocumentRepository.findById(savedDocument.getId());
-        if (optionalFoundDocument.isPresent()) {
-            log.info(optionalFoundDocument.get().toString());
-        }
+
+        Assert.assertTrue(optionalFoundDocument.isPresent());
+
+        final SimpleDocument simpleDocument = optionalFoundDocument.get();
+        Assert.assertEquals("same id", simpleDocument.getId(), this.document.getId());
     }
 
     @AfterClass
