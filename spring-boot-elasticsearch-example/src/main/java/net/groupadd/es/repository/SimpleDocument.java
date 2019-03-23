@@ -19,4 +19,9 @@ public class SimpleDocument {
     private String title;
     private String content;
     private Date createdAt;
+
+    public SimpleDocument() {
+        this.id = UUID.randomUUID();
+        this.createdAt = new Date();
+    }
 }
