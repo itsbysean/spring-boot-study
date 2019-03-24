@@ -56,7 +56,7 @@ public class SimpleDocumentRepositoryTestIT extends AbstractElasticSearchBaseTes
     }
 
     @AfterClass
-    public static void tearDownOnce() throws Exception {
+    public static void end() throws Exception {
         stop();
     }
 }

@@ -52,16 +52,16 @@ public abstract class AbstractElasticSearchBaseTest {
     }
 
     private static Map<String, String> env() {
-        final Map<String, String> envAsMap = new HashMap<>();
-        envAsMap.put("cluster.name", "docker-cluster");
-        envAsMap.put("bootstrap.memory_lock", "true");
-        envAsMap.put("ES_JAVA_OPTS", "-Xms512m -Xmx512m");
-        envAsMap.put("xpack.security.enabled", "false");
-        envAsMap.put("node.data", "true");
-        envAsMap.put("network.publish_host", "127.0.0.1");
-        envAsMap.put("network.host", "0.0.0.0");
-        envAsMap.put("discovery.zen.minimum_master_nodes", "1");
-        return envAsMap;
+        final Map<String, String> env = new HashMap<>();
+        env.put("cluster.name", "docker-cluster");
+        env.put("bootstrap.memory_lock", "true");
+        env.put("ES_JAVA_OPTS", "-Xms512m -Xmx512m");
+        env.put("xpack.security.enabled", "false");
+        env.put("node.data", "true");
+        env.put("network.publish_host", "127.0.0.1");
+        env.put("network.host", "0.0.0.0");
+        env.put("discovery.zen.minimum_master_nodes", "1");
+        return env;
     }
 
     protected static void stop(){
