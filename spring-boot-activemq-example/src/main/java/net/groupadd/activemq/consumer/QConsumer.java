@@ -22,7 +22,7 @@ public class QConsumer {
 
     @JmsListener(destination = "${example.queue}", containerFactory = "simpleQueueFactory")
     public void receive(final SimpleMessage simpleMessage){
-        log.info(simpleMessage.toString());
+        log.info("Message received : "+simpleMessage.toString());
         getLatch().countDown();
     }
 }

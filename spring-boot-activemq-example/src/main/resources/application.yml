@@ -1,31 +1,4 @@
 spring:
-  profiles:
-    active: prod
-
-
----
-
-spring:
-  profiles: prod
-  jms:
-    cache:
-      session-cache-size: 5
-    listener:
-      concurrency: 3
-  activemq:
-    broker-url: tcp://localhost:61616
-    user: admin
-    password: admin
-
-
-example:
-  queue: test-queue
-
-
----
-
-spring:
-  profiles: test
   jms:
     cache:
       session-cache-size: 5

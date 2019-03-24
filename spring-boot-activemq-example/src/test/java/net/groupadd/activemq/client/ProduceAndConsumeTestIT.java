@@ -1,16 +1,17 @@
-package net.groupadd.activemq;
+package net.groupadd.activemq.client;
 
 import lombok.extern.slf4j.Slf4j;
+import net.groupadd.activemq.base.AbstractActiveMQBaseTest;
 import net.groupadd.activemq.consumer.QConsumer;
 import net.groupadd.activemq.model.SimpleMessage;
 import net.groupadd.activemq.producer.QProducer;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
@@ -22,8 +23,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("test")
-public class ProduceTestIT {
+public class ProduceAndConsumeTestIT  extends AbstractActiveMQBaseTest {
 
     private final static String MESSAGE = "Hello World";
 
@@ -54,5 +54,8 @@ public class ProduceTestIT {
 
     }
 
-
+    @AfterClass
+    public static void end() throws Exception {
+        stop();
+    }
 }
