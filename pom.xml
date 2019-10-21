@@ -10,6 +10,9 @@
     <modules>
         <module>spring-boot-activemq-example</module>
         <module>spring-boot-elasticsearch-example</module>
+        <module>spring-boot-eureka-example</module>
+        <module>spring-boot-api-gateway-example</module>
+        <module>spring-boot-microservice-example</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -21,6 +24,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <testcontainer.version>1.11.0</testcontainer.version>
         <spring.boot.version>2.1.3.RELEASE</spring.boot.version>
+        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
     </properties>
 
     <parent>
@@ -46,6 +50,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>testcontainers</artifactId>
