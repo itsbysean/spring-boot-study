@@ -1,6 +1,11 @@
 spring:
+  profiles:
+    active: hello
   application:
-    name: microservice-hello
+    name: microservice
+---
+spring:
+  profiles: hello
   cloud:
     config:
       uri: http://localhost:8888

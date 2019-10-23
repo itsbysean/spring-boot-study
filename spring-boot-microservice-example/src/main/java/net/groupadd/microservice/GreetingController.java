@@ -1,6 +1,8 @@
 package net.groupadd.microservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,13 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by itsbysean.
  */
 @RestController
+@RequiredArgsConstructor
 public class GreetingController {
 
-    @Autowired
-    private Greeting greeting;
+    private final Greeting greeting;
 
     @GetMapping(value = "/hello")
     public ResponseEntity<?> hello(){
-        return ResponseEntity.ok(greeting);
+        return ResponseEntity.ok(new GreetingDto(greeting.getMessage()));
+    }
+
+    @Getter
+    @AllArgsConstructor
+    private static class GreetingDto {
+        private String message;
     }
 }

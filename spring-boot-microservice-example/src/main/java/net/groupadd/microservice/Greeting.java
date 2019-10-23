@@ -1,24 +1,17 @@
 package net.groupadd.microservice;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
-
-import java.io.Serializable;
 
 /**
  * Created by itsbysean.
  */
 @Component
-@ConfigurationProperties(prefix = "hello")
+@ConfigurationProperties("hello")
 @RefreshScope
-@Getter
-@Setter
-public class Greeting implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@Data
+public class Greeting {
     private String message;
 }
