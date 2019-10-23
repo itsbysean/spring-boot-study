@@ -13,6 +13,7 @@
         <module>spring-boot-eureka-example</module>
         <module>spring-boot-api-gateway-example</module>
         <module>spring-boot-microservice-example</module>
+        <module>spring-boot-config-example</module>
     </modules>
     <packaging>pom</packaging>
 

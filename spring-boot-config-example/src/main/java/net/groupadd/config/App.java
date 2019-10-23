@@ -1,15 +1,14 @@
-package net.groupadd.microservice;
+package net.groupadd.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
  * Created by itsbysean.
  */
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableConfigServer
 public class App {
 
     public static void main(String...args){
