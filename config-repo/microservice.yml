@@ -4,5 +4,13 @@ spring:
     port: 5672
     username: guest
     password: guest
+---
+spring:
+  profiles: eng
 hello:
   message: Hello World!
+---
+spring:
+  profiles: kor
+hello:
+  message: 안녕!
