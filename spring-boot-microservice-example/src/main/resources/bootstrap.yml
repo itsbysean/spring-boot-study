@@ -1,11 +1,8 @@
 spring:
   profiles:
-    active: hello
+    active: kor
   application:
     name: microservice
----
-spring:
-  profiles: hello
   cloud:
     config:
       uri: http://localhost:8888

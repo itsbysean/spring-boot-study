@@ -16,7 +16,7 @@ public class GreetingController {
 
     private final Greeting greeting;
 
-    @GetMapping(value = "/hello")
+    @GetMapping(value = "/greeting")
     public ResponseEntity<?> hello(){
         return ResponseEntity.ok(new GreetingDto(greeting.getMessage()));
     }
