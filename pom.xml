@@ -23,9 +23,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <testcontainer.version>1.11.0</testcontainer.version>
         <spring.boot.version>2.1.3.RELEASE</spring.boot.version>
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+        <docker.image.prefix>groupadd</docker.image.prefix>
+        <maven.version>3.0.0-M3</maven.version>
+        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
     </properties>
 
     <parent>
@@ -72,7 +76,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>${maven.version}</version>
                 <executions>
                     <execution>
                         <id>default-test</id>
@@ -100,19 +104,19 @@
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-junit47</artifactId>
-                        <version>3.0.0-M3</version>
+                        <version>${maven.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>${maven.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-junit47</artifactId>
-                        <version>3.0.0-M3</version>
+                        <version>${maven.version}</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -147,6 +151,20 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
     <repositories>
         <repository>
