@@ -5,4 +5,8 @@ spring:
     name: microservice
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://groupadd-config:8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://groupadd-eureka:8761/eureka

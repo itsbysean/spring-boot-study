@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  groupadd-api-gateway:
+    container_name: groupadd-api-gateway
+    image: groupadd/spring-boot-api-gateway-example
+    ports:
+      - 8765:8765
+
+  groupadd-microservice:
+    container_name: groupadd-microservice
+    image: groupadd/spring-boot-microservice-example
+    ports:
+      - 8080:8080
+
+networks:
+  default:
+    external:
+      name: groupadd-network

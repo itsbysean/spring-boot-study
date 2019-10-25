@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.7-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    hostname: bus
+    volumes:
+      - ./volumes/bus-rabbitmq:/var/lib/rabbitmq
+
+  groupadd-config:
+    container_name: groupadd-config
+    image: groupadd/spring-boot-config-example
+    depends_on:
+      - rabbitmq
+    ports:
+      - 8888:8888
+
+networks:
+  default:
+    external:
+      name: groupadd-network

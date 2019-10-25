@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  groupadd-eureka:
+    container_name: groupadd-eureka
+    image: groupadd/spring-boot-eureka-example
+    ports:
+      - 8761:8761
+
+networks:
+  default:
+    external:
+      name: groupadd-network
