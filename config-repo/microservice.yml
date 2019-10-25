@@ -4,6 +4,11 @@ spring:
     port: 5672
     username: guest
     password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://groupadd-eureka:8761/eureka
 ---
 spring:
   profiles: eng
